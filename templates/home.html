@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Downloader</title>
+</head>
+<body>
+    <form action="/download" method="post">
+        <input type="text" name="video_url" placeholder="Enter video URL">
+        <input type="submit" value="Download">
+    </form>
+    <div id="download_status"></div>
+</body>
+<script>
+document.querySelector('form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch('/download', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+        if (data.status === 'success') {
+            const downloadLink = `<a href="${data.download_path}" download>Download Video</a>`;
+            document.querySelector('#download_status').innerHTML = downloadLink;
+        } else {
+            document.querySelector('#download_status').textContent = 'Download failed.';
+        }
+    } catch (error) {
+        console.error(error);
+        document.querySelector('#download_status').textContent = 'An error occurred.';
+    }
+});
+</script>
+</html>

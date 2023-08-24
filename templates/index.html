@@ -1,0 +1,75 @@
+{% extends '/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %} {% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body> {% block body %}
+    <div class="container">
+        <div class="na">
+    <nav class="nav">
+        <a href="home.html">Home</a>
+        <a href="youtube.html">Youtube</a>
+        <a href="tictok.html">Tictok</a>
+        <a href="facebook.html">Facebook</a>
+        <a href="any.html">Any</a>
+        <a href="contact.html">Contact</a>
+
+    </nav>
+    <form action="/download" method="post" class="urll">
+       <div class="name">
+        site name
+       </div>
+        <br>
+        <label for="url" class="discrition">free online video downloader</label><br>
+        <input type="text" class="input-area" placeholder="Enter the URL" id="video_url" name="video_url">
+        <br>
+        <input type="submit" class="enterkey" id="download-button" value="Download">
+        <br>
+        <br />
+    </form>
+    <div class="download-container">
+        <div class="download-animation"></div>
+        <div class="download-message">Downloading...</div>
+        <progress class="download-progress" value="0" max="100"></progress>
+    </div>
+    
+    
+    <main class="main">
+
+        
+
+        <div class="main1">
+        word
+        </div>
+    
+        <div class="main2">
+        word
+        </div>
+    
+        <div class="main3">
+        word
+        </div>
+    
+    </main>
+</div>
+{% endblock %}
+</body>
+<script src="script.js"></script>
+<footer  class="footer"> 
+
+</footer>
+<div class="space">
+</html>
+
+
+
+
+
+
