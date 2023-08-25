@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y ffmpeg && apt-get clean
 COPY . .
 
 # Expose port 5000 for the application
-EXPOSE 5000
+EXPOSE 443
 
 # Set the command to run the application
-CMD ["python",app ".py"]
+CMD ["python","app.py"]
