@@ -1,11 +1,20 @@
+
 FROM python:3.8
 
-COPY requirements.txt
+# Copy requirements.txt file to the container
+COPY requirements.txt /app/requirements.txt
 
-RUN pip install --nocache-dir -r requirements.txt
+# Set the working directory to /app
+WORKDIR /app
 
-COPY . .
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy the rest of the application files to the containerCOPY . .
+
+
+# Expose port 5000 for the application
 EXPOSE 5000
 
-CMD["python","getvidonline.py"]
+# Set the command to run the application
+CMD ["python", "getvidonline.py"]
