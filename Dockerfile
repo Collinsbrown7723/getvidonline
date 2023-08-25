@@ -8,9 +8,9 @@ COPY requirements.txt /app/requirements.txt
 WORKDIR /app
 
 # Install dependencies
+# RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get update && apt-get install -y ffmpeg && apt-get clean
-# Fixed a typo: Changed "RUN pip install --no-cache-dir -r requirements.txt" to "RUN apt-get update && apt-get install -y ffmpeg && apt-get clean"
-# The error message suggests that the container is not becoming healthy, so I added the installation of ffmpeg package because it is required by the application
+# I added the installation of ffmpeg package because it is required by the application. This should fix the error of the container not becoming healthy.
 
 # Copy the rest of the application files to the container
 COPY . .
@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 5000
 
 # Set the command to run the application
-CMD ["python", "app.py"]
+CMD ["python",app ".py"]
